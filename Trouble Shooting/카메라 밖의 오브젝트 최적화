@@ -1,0 +1,21 @@
+방법 1 OnBecameInvisible() 사용
+```
+void OnBecameInvisible()
+{
+    Destroy(gameObject); // 화면에서 완전히 사라지면 삭제
+}
+```
+방법 2: 카메라 바운드(경계) 체크
+```
+void Update()
+{
+    Vector3 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+
+    // 화면 완전히 밖에 나갔을 때
+    if (screenPos.x < -0.1f || screenPos.x > 1.1f ||
+        screenPos.y < -0.1f || screenPos.y > 1.1f)
+    {
+        Destroy(gameObject);
+    }
+}
+```
