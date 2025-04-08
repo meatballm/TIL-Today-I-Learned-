@@ -1,0 +1,99 @@
+
+Unity 시간 제한 구현 방법 비교 (Invoke vs Update vs Coroutine)
+
+✅ 1. Invoke()
+```
+void Start()
+{
+    Invoke("GameOver", 30f);
+}
+
+void GameOver()
+{
+    Debug.Log("게임 오버!");
+}
+```
+👍 장점
+매우 간단하고 직관적
+
+빠르게 테스트하거나 프로토타입에서 유용
+
+👎 단점
+메서드명을 문자열로 입력 → 오타/리팩터에 취약
+
+취소/변경 어렵다 (CancelInvoke("메서드명"))
+
+조건부 타이머 제어 불가능
+
+디버깅 어려움
+
+✅ 2. Update() + if
+```
+float gameOverTime;
+
+void Start()
+{
+    gameOverTime = Time.time + 30f;
+}
+
+void Update()
+{
+    if (Time.time >= gameOverTime)
+    {
+        GameOver();
+    }
+}
+
+void GameOver()
+{
+    Debug.Log("게임 오버!");
+}
+```
+👍 장점
+조건부 로직 제어 가능 (중간에 취소/연장 등)
+
+실시간 처리, 세밀한 제어 가능
+
+👎 단점
+Update()는 매 프레임 실행 → 오버헤드 발생 가능
+
+타이머마다 조건 추가하면 코드 복잡도 증가
+
+✅ 3. IEnumerator (Coroutine)
+```
+IEnumerator GameOverTimer(float timeLimit)
+{
+    yield return new WaitForSeconds(timeLimit);
+    GameOver();
+}
+
+void Start()
+{
+    StartCoroutine(GameOverTimer(30f));
+}
+
+void GameOver()
+{
+    Debug.Log("게임 오버!");
+}
+```
+👍 장점
+Update() 없이 비동기 타이머 구현 가능
+
+가독성 좋고 유지보수 쉬움
+
+중간에 StopCoroutine()으로 취소 가능
+
+매우 유연한 시간 흐름 제어 가능
+
+👎 단점
+코루틴을 잘 이해하고 사용해야 함
+
+동시에 많은 코루틴이 실행되면 추적이 어렵기도 함
+
+🎯 결론
+간단한 지연 실행: Invoke
+
+정밀한 제어 필요할 때: Update + 조건
+
+성능과 가독성, 유지보수를 모두 고려한다면: Coroutine
