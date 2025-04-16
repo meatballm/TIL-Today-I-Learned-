@@ -57,3 +57,27 @@ foreach (string fruit in fruits)
 
 C#은 안전한 언어이기 때문에 포인터처럼 메모리주소를 다루는 기능은 사용하지 못한다(unsafe필요)
 대신 함수에서 외부 변수 수정을 위해서는 값을 받을때 ref를 붙이면 수정이 가능하다
+
+---
+
+## 상수
+
+정수가 아닌 상수를 정의하는 한 가지 방법은 Constants라는 단일 정적 클래스로 그룹화하는 것입니다. 이 경우 다음 예제와 같이 상수에 대한 모든 참조 앞에 클래스 이름이 와야 합니다.
+
+```static class Constants
+{
+    public const double Pi = 3.14159;
+    public const int SpeedOfLight = 300000; // km per sec.
+}
+
+class Program
+{
+    static void Main()
+    {
+        double radius = 5.3;
+        double area = Constants.Pi * (radius * radius);
+        int secsFromSun = 149476000 / Constants.SpeedOfLight; // in km
+        Console.WriteLine(secsFromSun);
+    }
+}
+```
