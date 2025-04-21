@@ -181,3 +181,66 @@ string text = "Hello, world!";
 string result2 = text.Substring(7, 5);  // 7번부터 5글자, 두번째 인자(5) 생략시 끝까지
 Console.WriteLine(result2);  // 출력: "world"
 ```
+
+---
+
+## Split()
+
+문자열을 지정한 구분자(delimiter)를 기준으로 나누고, 문자열 배열(string[])로 반환
+
+```
+string data = "apple,banana,grape";
+string[] fruits = data.Split(',');
+
+foreach (string fruit in fruits)
+{
+    Console.WriteLine(fruit);
+}
+```
+사용법 | 설명
+|---|---|
+|Split(',') | 쉼표 기준으로 나눔|
+|Split(' ') | 공백 기준으로 나눔|
+|Split(new char[] { ',', ';' }) | 여러 구분자 사용 가능|
+|Split(..., StringSplitOptions.RemoveEmptyEntries) | 빈 문자열 제거|
+
+---
+
+## StringBuilder()
+
+문자열을 자주 변경할 경우 `+` 연산보다 훨씬 효율적인 클래스입니다.
+
+```csharp
+using System.Text;
+
+StringBuilder sb = new StringBuilder();
+sb.Append("Hello");
+sb.Append(" ");
+sb.Append("World");
+
+Console.WriteLine(sb.ToString());  // 출력: Hello World
+```
+---
+
+## string.Join()
+
+문자열 배열을 하나의 문자열로 결합할 때 사용합니다.
+```
+string[] names = { "Kim", "Lee", "Park" };
+string result = string.Join(", ", names);
+
+Console.WriteLine(result);  // 출력: Kim, Lee, Park
+```
+
+---
+
+## StartsWith() / EndsWith()
+
+문자열이 특정 값으로 시작하거나 끝나는지 확인합니다.
+
+```
+string word = "HelloWorld";
+
+Console.WriteLine(word.StartsWith("Hello"));  // true
+Console.WriteLine(word.EndsWith("World"));   
+```
