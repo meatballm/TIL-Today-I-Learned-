@@ -81,3 +81,62 @@ class Program
     }
 }
 ```
+
+---
+
+## 보간 문자열
+
+$"문자열 {변수}" 형태로 사용
+가독성, 유지보수성 향상에 매우 유용
+
+예시
+```
+string name = "홍길동";
+int age = 30;
+string message = $"안녕하세요, {name}님. 나이는 {age}세입니다.";
+Console.WriteLine(message);
+
+int a = 5, b = 3;
+Console.WriteLine($"a + b = {a + b}");  // 출력: a + b = 8
+
+double price = 1234.567;
+Console.WriteLine($"가격: {price:C}");  // 예: 가격: ₩1,234.57
+```
+
+---
+
+## Replace
+
+원본을 바꾸지 않고 특정 문자나 문자열을 다른 것으로 교체
+
+```
+string original = "Hello, World!";
+string replaced = original.Replace("World", "C#");
+
+Console.WriteLine(replaced);  // 출력: Hello, C#!
+```
+
+---
+
+## Trim
+
+문자열의 앞뒤 공백(문자) 제거
+
+```
+string s = "**Hello**";
+Console.WriteLine(s.Trim('*'));  // 출력: "Hello"
+```
+
+---
+
+## ToLower()/ToUpper()
+
+문자열을 소/대문자로 변경
+
+```
+string s = "Hello World";
+Console.WriteLine(s.ToLower());  // 출력: "hello world"
+
+string s = "hello world";
+Console.WriteLine(s.ToUpper());  // 출력: "HELLO WORLD"
+```
