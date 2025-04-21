@@ -105,7 +105,7 @@ Console.WriteLine($"가격: {price:C}");  // 예: 가격: ₩1,234.57
 
 ---
 
-## Replace
+## Replace()
 
 원본을 바꾸지 않고 특정 문자나 문자열을 다른 것으로 교체
 
@@ -118,7 +118,7 @@ Console.WriteLine(replaced);  // 출력: Hello, C#!
 
 ---
 
-## Trim
+## Trim()
 
 문자열의 앞뒤 공백(문자) 제거
 
@@ -139,4 +139,45 @@ Console.WriteLine(s.ToLower());  // 출력: "hello world"
 
 string s = "hello world";
 Console.WriteLine(s.ToUpper());  // 출력: "HELLO WORLD"
+```
+
+---
+
+## Contains()
+
+문자열 또는 리스트 등에 특정 값이 있는지 여부를 true 또는 false로 반환하는 메서드
+
+```
+string text = "Hello, world!";
+bool hasHello = text.Contains("Hello");
+Console.WriteLine(hasHello);  // 출력: True
+
+List<string> fruits = new List<string> { "apple", "banana", "cherry" };
+bool hasBanana = fruits.Contains("banana");
+Console.WriteLine(hasBanana);  // 출력: True
+```
+
+---
+
+## IndexOf()
+
+문자열 안에서 특정 문자나 문자열이 처음 등장하는 위치(인덱스)를 반환
+
+```
+string text = "apple banana apple";
+int index = text.IndexOf("apple", 6);
+
+Console.WriteLine(index);  // 출력: 13 (두 번째 apple 위치)
+```
+
+---
+
+## SubString()
+
+문자열에서 일부분을 잘라내는 메서드
+
+```
+string text = "Hello, world!";
+string result2 = text.Substring(7, 5);  // 7번부터 5글자, 두번째 인자(5) 생략시 끝까지
+Console.WriteLine(result2);  // 출력: "world"
 ```
