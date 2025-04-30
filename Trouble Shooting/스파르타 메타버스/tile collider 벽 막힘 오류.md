@@ -28,4 +28,10 @@ void FixedUpdate() {
         Input.GetAxisRaw("Vertical")
     );
     rb2D.AddForce(inputDir * moveForce, ForceMode2D.Force);
+//가속과 감속을 빠르게 해주는 방법 acceleration과deceleration은 이동속도보다 빨라야한다
+//float accelX = Mathf.Abs(targetVelocity.x) > 0.01f ? acceleration : deceleration;
+//float accelY = Mathf.Abs(targetVelocity.y) > 0.01f ? acceleration : deceleration;
+
+//Vector2 force = new Vector2(velocityDiff.x * accelX, velocityDiff.y * accelY);
 }
+```
