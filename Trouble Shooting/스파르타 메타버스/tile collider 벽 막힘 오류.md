@@ -1,6 +1,7 @@
 # 캐릭터 이동: Rigidbody.velocity 직접 조작의 문제와 AddForce의 이점
 
 ## 문제 상황
+플레이어가 벽에 붙어서 이동시 걸려서 움직이지 않는 일이 생김
 - `Rigidbody.velocity`를 직접 세팅하여 이동 구현 시,  
   - 작은 서브픽셀 갭(sub-pixel gap)이나 프레임 간량(frame-to-frame) 이동 거리 증가로 인해  
   - 물리 엔진이 “충돌”로 잘못 인식하고 속도를 0으로 리셋해 버립니다.
